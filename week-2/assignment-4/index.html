@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <h1 class="main-header-title">Website Title / Logo</h1>
+      <nav class="main-nav">
+        <span class="menu-trigger"
+          ><img src="icon/iconfinder_ic_menu_48px_352539.svg" alt="menubar"
+        /></span>
+        <ul class="nav-list">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+      </nav>
+      <nav class="mobile-menu">
+        <button class="menu-close-button" type="button">X</button>
+        <ul class="mobile-menu-list">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="banner">
+      <h2 class="welcome-message">Welcome Message</h2>
+    </div>
+    <section class="main-content">
+      <h2 class="main-content-title">Section Title</h2>
+      <div class="content-boxes">
+        <div class="row">
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 1</h3>
+          </div>
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 2</h3>
+          </div>
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 3</h3>
+          </div>
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 4</h3>
+          </div>
+        </div>
+      </div>
+      <button class="action-button">Call to Action</button>
+      <div class="content-boxes">
+        <div class="row">
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 5</h3>
+          </div>
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 6</h3>
+          </div>
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 7</h3>
+          </div>
+          <div class="content-box">
+            <h3 class="content-box-title">Content Box 8</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="app.js"></script>
+    <script>
+      // Assignment 1: Function and Array
+      function max(numbers) {
+        let maxNumber = -Infinity;
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] > maxNumber) {
+            maxNumber = numbers[i];
+          }
+        }
+        return maxNumber;
+      }
+      max([1, 2, 4, 5]);
+      max([5, 2, 7, 1, 6]);
+
+      // Assignment 2: Object
+      function calculate(args) {
+        let result;
+        if (args.op === "+") {
+          result = args.n1 + args.n2;
+        } else if (args.op === "-") {
+          result = args.n1 - args.n2;
+        } else {
+          result = "Not supported";
+        }
+        return result;
+      }
+      class ClassArgs {
+        constructor(n1, n2, op) {
+          this.n1 = n1;
+          this.n2 = n2;
+          this.op = op;
+        }
+      }
+      function FunctionArgs(n1, n2, op) {
+        this.n1 = n1;
+        this.n2 = n2;
+        this.op = op;
+      }
+      calculate({ n1: 1, n2: 2, op: "+" });
+      calculate(new ClassArgs(1, 2, "+"));
+      calculate(new FunctionArgs(1, 2, "+"));
+
+      // Assignment 3: Function, Array, and Object
+      function avg(data) {
+        let totalPrice = 0;
+        for (let i = 0; i < data.size; i++) {
+          totalPrice += data.products[i].price;
+        }
+        console.log(totalPrice / data.size);
+      }
+      avg({
+        size: 3,
+        products: [
+          {
+            name: "Product 1",
+            price: 100,
+          },
+          {
+            name: "Product 2",
+            price: 700,
+          },
+          {
+            name: "Product 3",
+            price: 250,
+          },
+        ],
+      });
+
+      // Assignment 5: Algorithm Practice (Advanced Optional)
+      function twoSum(nums, target) {
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+              return [i, j];
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
