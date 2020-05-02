@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sum</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <label>Please Input a number: </label>
+      <input class="inputNumber" type="text" />
+      <button class="submitButton" type="button">Submit</button>
+      <div class="result"></div>
+    </div>
+    <script>
+      // Assignment 3:
+      // 4. Write a simple user interface to let users enter a number and get result from server.(For a simple example, a text input and a button.)
+      const button = document.querySelector(".submitButton");
+      const inputNumber = document.querySelector(".inputNumber");
+      const result = document.querySelector(".result");
+      button.addEventListener("click", () => {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            result.innerHTML = xhr.responseText;
+          }
+        };
+        xhr.open("GET", `/getData?number=${inputNumber.value}`);
+        xhr.send();
+      });
+    </script>
+    <script>
+      // Assignment 3:
+      // 3. Write some JavaScript code in​sum.html​to make an HTTP request by AJAX to http://localhost:3000/getData?number=10​, and get the result 55 from server.
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+      xhr.open("GET", "/getData?number=10");
+      xhr.send();
+    </script>
+  </body>
+</html>
