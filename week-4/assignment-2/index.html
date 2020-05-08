@@ -1,0 +1,51 @@
+<html lang="en">
+  <head>
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      function ajax(src, callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            callback(JSON.parse(xhr.response));
+          }
+        };
+        xhr.open("GET", src);
+        xhr.send();
+      }
+      function render(data) {
+        const container = document.querySelector(".container");
+        for (let i = 0; i < data.length; i++) {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const name = document.createElement("div");
+          name.className = "card-title";
+          name.textContent = data[i].name;
+          card.appendChild(name);
+
+          const price = document.createElement("span");
+          price.className = "tag";
+          price.textContent = data[i].price;
+          card.appendChild(price);
+
+          const desc = document.createElement("p");
+          desc.className = "description";
+          desc.textContent = data[i].description;
+          card.appendChild(desc);
+
+          container.appendChild(card);
+        }
+      }
+      ajax(
+        "https://cwpeng.github.io/live-records-samples/data/products.json",
+        function (response) {
+          render(response);
+        }
+      );
+    </script>
+  </body>
+</html>
